@@ -1,19 +1,19 @@
 node{
    stage('SCM Checkout'){
-       git 'https://github.com/joyktech/python-app-jenkinsfile'
+       git 'https://github.com/Arefinrumi/DEV_PRO'
    }
    stage('build Docker Image'){
-     sh 'docker build -t joyktech/my-testpython:2.0.1 .'
+     sh 'docker build -t Arefinrumi/my-testpython:2.0.1 .'
    }
    stage('Push Docker Image'){
      withCredentials([string(credentialsId: 'dockerpassword1', variable: 'dockerhubpassword')]) {
-        sh "docker login -u joyktech -p ${dockerhubpassword}"
+        sh "docker login -u arefin007 -p ${dockerhubpassword}"
      }
-     sh 'docker push joyktech/my-testpython:2.0.1'
+     sh 'docker push arefin007/my-testpython:2.0.1'
    }
    stage('Run Container on Staging'){ 
      def dockerRun = 'docker run  -p 6379:6379 -d --name redis redis'
-     def dockerRun1 = 'docker run -p 4040:80 -d --link redis --name my-python-app joyktech/my-testpython:2.0.1'
+     def dockerRun1 = 'docker run -p 4040:80 -d --link redis --name my-python-app arefin007/my-testpython:2.0.1'
      def dockerRun2 = 'docker rm -f my-python-app'
      def dockerRun3 = 'docker rm -f redis'
      sshagent(['dockerserver']) {
