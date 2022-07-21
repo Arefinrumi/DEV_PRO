@@ -3,7 +3,7 @@ node{
        git 'https://github.com/Arefinrumi/DEV_PRO'
    }
    stage('build Docker Image'){
-     sh 'docker build -t Arefinrumi/my-testpython:2.0.1 .'
+     sh 'docker build -t arefinrumi/my-testpython:2.0.1 .'
    }
    stage('Push Docker Image'){
      withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerhubpassword')]) {
