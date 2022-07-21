@@ -9,7 +9,7 @@ node{
      withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerhubpassword')]) {
         sh "docker login -u arefin007 -p ${dockerhubpassword}"
      }
-     sh 'docker push arefin007/my-testpython:2.0.1'
+     sh 'docker push arefinrumi/my-testpython:2.0.1'
    }
    stage('Run Container on Staging'){ 
      def dockerRun = 'docker run  -p 6379:6379 -d --name redis redis'
