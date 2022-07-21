@@ -6,7 +6,7 @@ node{
      sh 'docker build -t arefinrumi/my-testpython:2.0.1 .'
    }
    stage('Push Docker Image'){
-     withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerhubpassword')]) {
+     withCredentials([string(credentialsId: 'dockerpassword1', variable: 'dockerhubpassword')]) {
         sh "docker login -u arefin007 -p ${dockerhubpassword}"
      }
      sh 'docker push arefinrumi/my-testpython:2.0.1'
